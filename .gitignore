@@ -4,3 +4,10 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 .idea
+# Databases aren't committed
+*.db
+*.db-shm
+*.db-wal
+
+# Exclude .user files because idk why they're needed
+*.user

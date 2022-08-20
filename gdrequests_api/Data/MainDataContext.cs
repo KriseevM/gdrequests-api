@@ -10,7 +10,6 @@ public class MainDataContext : DbContext
     public MainDataContext(IConfiguration config, DbContextOptions<MainDataContext> options) : base(options)
     {
         _config = config;
-        Database.Migrate();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

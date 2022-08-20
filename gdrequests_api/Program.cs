@@ -2,6 +2,7 @@ using System.Net.Mail;
 using gdrequests_api.Controllers;
 using gdrequests_api.Data;
 using gdrequests_api.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,12 +16,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient<GdLevelsChecker>();
 builder.Services.AddScoped<GdLevelsChecker>();
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider.GetRequiredService<MainDataContext>().Database.Migrate();
 }
 
 app.UseHttpsRedirection();

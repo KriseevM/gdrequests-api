@@ -1,4 +1,6 @@
+using System.Net.Mail;
 using gdrequests_api.Controllers;
+using gdrequests_api.Data;
 using gdrequests_api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDbContext<MainDataContext>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient<GdLevelsChecker>();
 builder.Services.AddScoped<GdLevelsChecker>();
@@ -23,7 +26,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

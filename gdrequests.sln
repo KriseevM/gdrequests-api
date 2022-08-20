@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gdrequests_api", "gdrequests_api\gdrequests_api.csproj", "{BA8D8C1A-491A-4CC7-8CF2-26B6203737F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{9FF61CCC-AE7E-4BED-806B-6380FFE0B60F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{BA8D8C1A-491A-4CC7-8CF2-26B6203737F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA8D8C1A-491A-4CC7-8CF2-26B6203737F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA8D8C1A-491A-4CC7-8CF2-26B6203737F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF61CCC-AE7E-4BED-806B-6380FFE0B60F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF61CCC-AE7E-4BED-806B-6380FFE0B60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF61CCC-AE7E-4BED-806B-6380FFE0B60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF61CCC-AE7E-4BED-806B-6380FFE0B60F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -41,4 +41,14 @@ public class RequestsController : Controller
         await _dbContext.SaveChangesAsync();
         return Ok("ok");
     }
+
+    [HttpGet]
+    public IActionResult Get(
+        [FromQuery] int count = 10, 
+        [FromQuery] int offset = 0)
+    {
+        return Json(new {
+            Levels = _dbContext.Levels.Skip(offset).Take(10).ToArray()
+        });
+    }
 }

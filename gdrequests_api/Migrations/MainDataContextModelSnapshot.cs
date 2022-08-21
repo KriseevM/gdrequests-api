@@ -25,7 +25,7 @@ namespace gdrequests_api.Migrations
                     b.Property<int>("AddedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
-                        .HasDefaultValueSql("UNIXEPOCH()");
+                        .HasDefaultValueSql("strftime('%s', 'now')");
 
                     b.Property<int>("ServerId")
                         .HasColumnType("INTEGER");

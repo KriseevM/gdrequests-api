@@ -21,9 +21,9 @@ public class MainDataContext : DbContext
     {
         modelBuilder.Entity<Level>().Property(p => p.AddedAt)
             .HasConversion<int>(
-                v => (int)((DateTime.UtcNow - DateTime.UnixEpoch).TotalSeconds),
+                v => (int) ((v - DateTime.UnixEpoch).TotalSeconds),
                 v => DateTime.UnixEpoch.AddSeconds(v))
-            .HasDefaultValueSql("UNIXEPOCH()");
+            .HasDefaultValueSql("strftime('%s', 'now')");
         modelBuilder.Entity<Level>().HasKey(p => p.Id);
         modelBuilder.Entity<Level>().HasIndex(p => p.ServerId).IsUnique();
         modelBuilder.Entity<Level>().HasIndex(p => p.AddedAt);

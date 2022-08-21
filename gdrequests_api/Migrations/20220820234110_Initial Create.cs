@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -15,8 +14,8 @@ namespace gdrequests_api.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    AddedAt = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValueSql: "UNIXEPOCH()"),
-                    ServerId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ServerId = table.Column<int>(type: "INTEGER", nullable: false),
+                    AddedAt = table.Column<int>(type: "INTEGER", nullable: false, defaultValueSql: "strftime('%s', 'now')")
                 },
                 constraints: table =>
                 {

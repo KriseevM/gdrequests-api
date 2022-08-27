@@ -48,7 +48,8 @@ public class RequestsController : Controller
         [FromQuery] int offset = 0)
     {
         return Json(new {
-            Levels = _dbContext.Levels.Skip(offset).Take(10).ToArray()
+            Levels = _dbContext.Levels.Skip(offset).Take(10).ToArray(),
+            TotalLevelCount = _dbContext.Levels.Count()
         });
     }
 }

@@ -20,9 +20,6 @@ public class MainDataContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Level>().Property(p => p.AddedAt)
-            .HasConversion<int>(
-                v => (int) ((v - DateTime.UnixEpoch).TotalSeconds),
-                v => DateTime.UnixEpoch.AddSeconds(v))
             .HasDefaultValueSql("strftime('%s', 'now')");
         modelBuilder.Entity<Level>().HasKey(p => p.Id);
         modelBuilder.Entity<Level>().HasIndex(p => p.ServerId).IsUnique();

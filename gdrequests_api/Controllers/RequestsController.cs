@@ -11,7 +11,7 @@ public class RequestsController : Controller
     private readonly ILogger<RequestsController> _logger;
     private readonly GdLevelsChecker _levelsChecker;
     private readonly MainDataContext _dbContext;
-
+    public static event EventHandler LevelAdded;
     public RequestsController(ILogger<RequestsController> logger, GdLevelsChecker levelsChecker,
         MainDataContext dbContext)
     {
@@ -37,8 +37,9 @@ public class RequestsController : Controller
         }
         _logger.Log(LogLevel.Debug, "Level was found on GD server");
         _dbContext.Levels.Add(new Level() { ServerId = levelId });
-        _logger.Log(LogLevel.Information, "Level {0} was added to database", levelId);
         await _dbContext.SaveChangesAsync();
+        _logger.Log(LogLevel.Information, "Level {0} was added to database", levelId);
+        LevelAdded?.Invoke(this, EventArgs.Empty);
         return Ok("ok");
     }
 
@@ -52,4 +53,5 @@ public class RequestsController : Controller
             TotalLevelCount = _dbContext.Levels.Count()
         });
     }
+    
 }

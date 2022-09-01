@@ -11,3 +11,5 @@ riderModule.iml
 
 # Exclude .user files because idk why they're needed
 *.user
+
+wwwroot

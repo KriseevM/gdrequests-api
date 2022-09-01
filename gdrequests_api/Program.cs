@@ -3,6 +3,11 @@ using gdrequests_api.Services;
 using Lib.AspNetCore.ServerSentEvents;
 using Microsoft.EntityFrameworkCore;
 
+if (!Directory.Exists("wwwroot"))
+{
+    Directory.CreateDirectory("wwwroot");
+}
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient<GdLevelsChecker>();

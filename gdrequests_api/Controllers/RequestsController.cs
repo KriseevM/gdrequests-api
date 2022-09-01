@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace gdrequests_api.Controllers;
 
-[Route("[controller].[action]")]
-public class RequestsController : Controller
+[ApiController]
+[Route("requests.[action]")]
+public class RequestsController : ControllerBase
 {
     private readonly ILogger<RequestsController> _logger;
     private readonly GdLevelsChecker _levelsChecker;
@@ -48,7 +49,7 @@ public class RequestsController : Controller
         [FromQuery] int count = 10, 
         [FromQuery] int offset = 0)
     {
-        return Json(new {
+        return new JsonResult(new {
             Levels = _dbContext.Levels.Skip(offset).Take(10).ToArray(),
             TotalLevelCount = _dbContext.Levels.Count()
         });

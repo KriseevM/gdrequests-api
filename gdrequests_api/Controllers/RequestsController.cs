@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace gdrequests_api.Controllers;
 
 [ApiController]
-[Route("requests.[action]")]
+[Route("api/requests.[action]")]
 public class RequestsController : ControllerBase
 {
     private readonly ILogger<RequestsController> _logger;

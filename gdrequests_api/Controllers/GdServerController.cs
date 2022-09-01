@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace gdrequests_api.Controllers;
 
 [ApiController]
-[Route("gdserver.[action]")]
+[Route("api/gdserver.[action]")]
 public class GdServerController : ControllerBase
 {
     private readonly GdLevelsChecker _checker;

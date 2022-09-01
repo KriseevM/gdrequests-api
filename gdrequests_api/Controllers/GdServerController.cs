@@ -13,12 +13,6 @@ public class GdServerController : ControllerBase
     {
         _checker = checker;
     }
-    
-    [HttpGet]
-    public IActionResult GetLevelInfo(int[] levelIds)
-    {
-        return StatusCode(501);
-    }
     [HttpGet]
     public async Task<bool> CheckLevel(int levelId)
     {

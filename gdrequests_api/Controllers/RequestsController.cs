@@ -21,7 +21,7 @@ public class RequestsController : ControllerBase
         _dbContext = dbContext;
     }
 
-    [HttpPut]
+    [HttpPost]
     public async Task<IActionResult> Add(int levelId)
     {
         _logger.Log(LogLevel.Debug, "Received {0} level. Checking", levelId);

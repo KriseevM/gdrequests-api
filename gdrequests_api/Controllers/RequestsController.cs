@@ -22,7 +22,7 @@ public class RequestsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Add(int levelId)
+    public async Task<IActionResult> Add([FromBody] int levelId)
     {
         _logger.Log(LogLevel.Debug, "Received {0} level. Checking", levelId);
         if (_dbContext.Levels.Any(p => p.ServerId == levelId))

@@ -33,7 +33,7 @@ public class GdLevelsInfoFetcher
         }
         var hashSplitResponse = responseString.Split('|')[0].Split('#');
         var splitResponse = hashSplitResponse[0].Split(':');
-        string authorName = String.IsNullOrEmpty(hashSplitResponse[1]) ?
+        string authorName = !String.IsNullOrEmpty(hashSplitResponse[1]) ?
             hashSplitResponse[1].Split(':')[1] : "-";
         
         Dictionary<int, string> metaDictionary = new Dictionary<int, string>();

@@ -5,8 +5,9 @@ namespace gdrequests_api.Data;
 
 public class MainDataContext : DbContext
 {
-    public DbSet<Level> Levels { get; set; } = null!;
-    private IConfiguration _config;
+    public DbSet<Request> Requests { get; set; } = null!;
+    public DbSet<LevelMetadata> LevelMetadata { get; set; } = null!;
+    private readonly IConfiguration _config;
     public MainDataContext(IConfiguration config, DbContextOptions<MainDataContext> options) : base(options)
     {
         _config = config;
@@ -19,10 +20,14 @@ public class MainDataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Level>().Property(p => p.AddedAt)
+        modelBuilder.Entity<Request>().Property(p => p.AddedAt)
             .HasDefaultValueSql("strftime('%s', 'now')");
-        modelBuilder.Entity<Level>().HasKey(p => p.Id);
-        modelBuilder.Entity<Level>().HasIndex(p => p.ServerId).IsUnique();
-        modelBuilder.Entity<Level>().HasIndex(p => p.AddedAt);
+        modelBuilder.Entity<Request>().HasKey(p => p.Id);
+        modelBuilder.Entity<Request>().HasIndex(p => p.LevelId).IsUnique();
+        modelBuilder.Entity<Request>().HasIndex(p => p.AddedAt);
+        modelBuilder.Entity<Request>()
+            .HasOne(l => l.Metadata)
+            .WithOne(m => m.Request).
+            HasForeignKey<LevelMetadata>(m => m.RequestId);
     }
 }
